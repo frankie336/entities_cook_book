@@ -1,8 +1,9 @@
-import os
 import json
+import os
 import time
-from projectdavid import Entity
+
 from dotenv import load_dotenv
+from projectdavid import Entity
 
 load_dotenv()
 
