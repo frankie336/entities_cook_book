@@ -1,10 +1,7 @@
 import os
-
 from dotenv import load_dotenv
 from projectdavid import Entity
-
 load_dotenv()
-
 # --------------------------------------------------
 # Load the Entities client with your user API key
 # Note: if you define ENTITIES_API_KEY="ea_6zZiZ..."
@@ -13,7 +10,7 @@ load_dotenv()
 # ---------------------------------------------------
 client = Entity(base_url="http://localhost:9000", api_key=os.getenv("ENTITIES_API_KEY"))
 
-user_id = "user_kUKV8octgG2aMc7kxAcD3i"
+user_id = "user_s8zskKGLK3zv78VzQrKrp0"
 
 # -----------------------------
 # create an assistant
@@ -37,8 +34,6 @@ thread = client.threads.create_thread(participant_ids=[user_id])
 print(f"created thread with ID: {thread.id}")
 # Store the dynamically created thread ID
 actual_thread_id = thread.id
-
-
 # -----------------------------------------
 #  Create a message using the NEW thread ID
 # --------------------------------------------
@@ -46,7 +41,7 @@ print(f"Creating message in thread {actual_thread_id}...")
 message = client.messages.create_message(
     thread_id=actual_thread_id,
     role="user",
-    content="Hello, assistant! Tell me about the latest trends in AI.",
+    content="Explain a black hole to me in pure mathematical terms",
     assistant_id=assistant.id,
 )
 print(f"Created message with ID: {message.id}")
@@ -76,12 +71,11 @@ sync_stream.setup(
     api_key=os.getenv("HYPERBOLIC_API_KEY"),
 )
 print("Stream setup complete. Starting streaming...")
-
 # --- Stream initial LLM response ---
 try:
     for chunk in sync_stream.stream_chunks(
         provider="Hyperbolic",
-        model="hyperbolic/deepseek-ai/DeepSeek-V3-0324",  # Ensure this model is valid/available
+        model="hyperbolic/deepseek-ai/DeepSeek-V3",
         timeout_per_chunk=15.0,
     ):
         content = chunk.get("content", "")
