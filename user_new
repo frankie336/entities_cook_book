@@ -1,0 +1,20 @@
+
+New REGULAR user created successfully:
+  User ID:    user_b3iMqLO312egOwUWNBBrFU
+  User Email: test_regular_user_1744745081@example.com
+  Is Admin:   N/A
+
+Attempting to generate initial API key for user user_b3iMqLO312egOwUWNBBrFU (test_regular_user_1744745081@example.com)...
+Calling SDK method 'create_key_for_user' on admin client for user ID user_b3iMqLO312egOwUWNBBrFU
+
+==================================================
+  Initial API Key Generated for Regular User (by Admin)!
+  User ID:    user_b3iMqLO312egOwUWNBBrFU
+  User Email: test_regular_user_1744745081@example.com
+  Key Prefix: ea_1xIvj
+  Key Name:   N/A
+--------------------------------------------------
+  PLAIN TEXT API KEY: ea_1xIvjjqVoOGy8prYQ8KeAX2dCUbry5RzivY-Xc1JVS8
+--------------------------------------------------
+  Provide this key to the regular user for API access.
+==================================================
