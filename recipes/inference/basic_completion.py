@@ -22,7 +22,7 @@ client = Entity(
 )
 
 def main():
-    user_id = "user_s8zskKGLK3zv78VzQrKrp0"
+    user_id = os.getenv("ENTITIES_USER_ID")
 
     # --- Assistant Creation ---
     print("[+] Creating assistant...")
@@ -65,7 +65,7 @@ def main():
         assistant_id=assistant.id,
         message_id=message.id,
         run_id=run.id,
-        api_key=os.getenv("HYPERBOLIC_API_KEY"),
+        api_key=os.getenv("TOGETHER_API_KEY"),
     )
     print("[✓] Stream setup complete.")
 
@@ -74,8 +74,8 @@ def main():
     try:
         for chunk in sync_stream.stream_chunks(
             provider="Hyperbolic",
-            model="hyperbolic/deepseek-ai/DeepSeek-V3",
-            timeout_per_chunk=15.0,
+            model="together-ai/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+            timeout_per_chunk=60.0,
         ):
             content = chunk.get("content", "")
             if content:
