@@ -24,7 +24,7 @@ client = Entity(
 
 USER_ID      = os.getenv("ENTITIES_USER_ID")          # e.g. user_xxx…
 ASSISTANT_ID = "default"                              # existing assistant
-MODEL_ID     = "together-ai/meta-llama/Llama-4-Scout-17B-16E-Instruct"
+MODEL_ID     = "together-ai/meta-llama/Llama-3.3-70B-Instruct-Turbo"
 PROVIDER_KW  = "TogetherAI"                           # router reads model path anyway
 TOGETHER_KEY = os.getenv("TOGETHER_API_KEY")          # provider key
 

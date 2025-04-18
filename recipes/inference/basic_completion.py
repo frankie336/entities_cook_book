@@ -65,7 +65,7 @@ def main():
         assistant_id=assistant.id,
         message_id=message.id,
         run_id=run.id,
-        api_key=os.getenv("TOGETHER_API_KEY"),
+        api_key=os.getenv("DEEP_SEEK_API_KEY"),
     )
     print("[✓] Stream setup complete.")
 
@@ -74,7 +74,7 @@ def main():
     try:
         for chunk in sync_stream.stream_chunks(
             provider="Hyperbolic",
-            model="together-ai/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+            model="deepseek-ai/deepseek-chat",
             timeout_per_chunk=60.0,
         ):
             content = chunk.get("content", "")
