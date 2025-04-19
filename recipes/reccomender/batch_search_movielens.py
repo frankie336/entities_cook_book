@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!recipes/reccomender/batch_search_movielens.py
 # Run multiple nuanced semantic queries against your existing vector store
 
 import os

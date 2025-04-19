@@ -1,3 +1,4 @@
+#! recipes/function_calls/attach_tool_to_existing_assistant.py
 """
 Register a “get_flight_times” function‑tool
 and attach it to an **existing** assistant with ID "default".

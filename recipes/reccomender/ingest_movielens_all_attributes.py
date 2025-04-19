@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
+#!/recipes/reccomender/ingest_movielens_all_attributes.py
 """
 Ingest MovieLens metadata into a vector store,
 embedding all known descriptive attributes into vectorized text.
-
-vect_wHvnnr27MGNCVIhz9yqg07
 
 """
 

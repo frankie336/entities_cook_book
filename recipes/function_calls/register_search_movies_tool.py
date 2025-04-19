@@ -1,3 +1,4 @@
+#! recipes/function_calls/register_search_movies_tool.py
 """
 Register the `search_movies` function tool and attach it to the default assistant.
 This enables function calling for MovieLens-style semantic vector queries.
