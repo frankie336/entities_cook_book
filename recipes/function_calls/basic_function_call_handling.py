@@ -24,9 +24,9 @@ client = Entity(
 
 USER_ID      = os.getenv("ENTITIES_USER_ID")          # e.g. user_xxx…
 ASSISTANT_ID = "default"                              # existing assistant
-MODEL_ID     = "together-ai/meta-llama/Llama-3.3-70B-Instruct-Turbo"
+MODEL_ID     = "hyperbolic/deepseek-ai/DeepSeek-V3-0324"
 PROVIDER_KW  = "TogetherAI"                           # router reads model path anyway
-TOGETHER_KEY = os.getenv("TOGETHER_API_KEY")          # provider key
+HYPERBOLIC_API_KEY = os.getenv("HYPERBOLIC_API_KEY")          # provider key
 
 # ------------------------------------------------------------------
 # 1.  Tool executor  (runs locally for this demo)
@@ -66,7 +66,7 @@ stream.setup(
     assistant_id=ASSISTANT_ID,
     message_id=message.id,
     run_id=run.id,
-    api_key=TOGETHER_KEY
+    api_key=HYPERBOLIC_API_KEY
 )
 
 print("\n[▶] Initial stream …\n")
@@ -89,8 +89,8 @@ handled = client.runs.poll_and_execute_action(
     tool_executor=get_flight_times,
     actions_client=client.actions,
     messages_client=client.messages,
-    timeout=60.0,
-    interval=2.0
+    timeout=5.0,
+    interval=0.1
 )
 
 # ------------------------------------------------------------------
@@ -105,7 +105,7 @@ if handled:
         assistant_id=ASSISTANT_ID,
         message_id="regenerated",
         run_id=run.id,
-        api_key=TOGETHER_KEY
+        api_key=HYPERBOLIC_API_KEY
     )
 
     for chunk in stream.stream_chunks(

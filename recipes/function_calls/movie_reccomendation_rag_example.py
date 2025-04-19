@@ -66,6 +66,18 @@ def search_movies(tool_name: str, arguments: dict) -> str:
         }
         for i, h in enumerate(hits)
     ]
+
+    # final_results = def some_pretrained_model(input='results')
+    #------------------------------------------------------------
+    # Deal with your user specific pretrained model results here
+    # by passing the results as input. This will add some delay
+    # The result is that the  final output is tailored to whatever
+    # logic is contained in your pretrained model. For example,
+    # It might refine and rank the list of movies  according to user
+    # preferences and watch history. You will have to tailor and map
+    # results according to whatever your pretrained model does
+    #-------------------------------------------------------------
+    # return return json.dumps({"status": "success", "results": final_results})
     return json.dumps({"status": "success", "results": results})
 
 
@@ -74,7 +86,7 @@ thread = client.threads.create_thread(participant_ids=[USER_ID])
 message = client.messages.create_message(
     thread_id=thread.id,
     role="user",
-    content="Recommend a space‑age dinosaur movie that feels like Jurassic Park.",
+    content="Recommend 10 movies released in 1993, with  monsters in it",
     assistant_id=ASSISTANT_ID,
 )
 run = client.runs.create_run(assistant_id=ASSISTANT_ID, thread_id=thread.id)
@@ -107,8 +119,8 @@ handled = client.runs.poll_and_execute_action(
     tool_executor=search_movies,
     actions_client=client.actions,
     messages_client=client.messages,
-    timeout=60.0,
-    interval=2.0,
+    timeout=10.0,
+    interval=1.0,
 )
 
 # ─── Stream the assistant’s final answer ─────────────────────────────────────

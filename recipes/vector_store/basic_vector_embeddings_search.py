@@ -45,7 +45,7 @@ log.info("Files so far: %d", sanity.file_count)     # should be 0 on first run
 # --------------------------------------------------------------------- #
 # 3.  Add a file (chunk → embed → upsert → register)
 # --------------------------------------------------------------------- #
-FILE_PATH = Path("201101_donoghue_v-_stevenson.txt")   # any local text file
+FILE_PATH = Path("Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf")   # any local text file
 
 file_rec = client.vectors.add_file_to_vector_store(
     vector_store_id=store.id,
