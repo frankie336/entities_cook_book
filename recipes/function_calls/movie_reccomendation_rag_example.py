@@ -81,12 +81,13 @@ def search_movies(tool_name: str, arguments: dict) -> str:
     return json.dumps({"status": "success", "results": results})
 
 
+
 # ─── Thread + message + run ──────────────────────────────────────────────────
 thread = client.threads.create_thread(participant_ids=[USER_ID])
 message = client.messages.create_message(
     thread_id=thread.id,
     role="user",
-    content="Recommend 10 movies released in 1993, with  monsters in it",
+    content="Recommend a space‑age dinosaur movie that feels like Jurassic Park.",
     assistant_id=ASSISTANT_ID,
 )
 run = client.runs.create_run(assistant_id=ASSISTANT_ID, thread_id=thread.id)
