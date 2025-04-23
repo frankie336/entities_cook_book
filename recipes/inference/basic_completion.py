@@ -12,19 +12,31 @@ import os
 from dotenv import load_dotenv
 from projectdavid import Entity
 
+from recipes.function_calls.basic_function_call_handling import PROVIDER_KW
+
 # Load environment variables from .env
 load_dotenv()
 
-# Initialize the SDK client
+
+# ── Initialize the SDK client ────────────────────────────────────────────
 client = Entity(
     base_url=os.getenv("BASE_URL", "http://localhost:9000"),
     api_key=os.getenv("ENTITIES_API_KEY")
 )
 
+
+API_KEY = os.getenv("HYPERBOLIC_API_KEY")
+MODEL = "hyperbolic/deepseek-ai/DeepSeek-V3-0324"
+PROVIDER = "Hyperbolic"
+
+
 def main():
     user_id = os.getenv("ENTITIES_USER_ID")
 
-    # --- Assistant Creation ---
+
+    # ── Assistant Creation  ──────────────────────
+    # Assistants can be reused.
+    # ─────────────────────────────────────────────
     print("[+] Creating assistant...")
     assistant = client.assistants.create_assistant(
         name="test_assistant",
@@ -32,13 +44,17 @@ def main():
     )
     print(f"[✓] Assistant created: {assistant.id}")
 
-    # --- Thread Creation ---
+
+    # ── Thread Creation ──────────────────────────
+    # Threads can be reused.
+    # ─────────────────────────────────────────────
+
     print("[+] Creating thread...")
     thread = client.threads.create_thread(participant_ids=[user_id])
     actual_thread_id = thread.id
     print(f"[✓] Thread created: {actual_thread_id}")
 
-    # --- Message Creation ---
+    # ── Message Creation ──────────────────────────
     print("[+] Creating user message...")
     message = client.messages.create_message(
         thread_id=actual_thread_id,
@@ -48,7 +64,9 @@ def main():
     )
     print(f"[✓] Message created: {message.id}")
 
-    # --- Run Creation ---
+
+    # ── Run Creation ──────────────────────────
+
     print("[+] Creating run...")
     run = client.runs.create_run(
         assistant_id=assistant.id,
@@ -65,7 +83,7 @@ def main():
         assistant_id=assistant.id,
         message_id=message.id,
         run_id=run.id,
-        api_key=os.getenv("DEEP_SEEK_API_KEY"),
+        api_key=API_KEY,
     )
     print("[✓] Stream setup complete.")
 
@@ -73,8 +91,8 @@ def main():
     print("[▶] Streaming response:\n")
     try:
         for chunk in sync_stream.stream_chunks(
-            provider="Hyperbolic",
-            model="deepseek-ai/deepseek-chat",
+            provider=PROVIDER,
+            model=MODEL,
             timeout_per_chunk=60.0,
         ):
             content = chunk.get("content", "")

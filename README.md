@@ -51,3 +51,9 @@ This cookbook is optimized for:
 - [`function_call_rag_movie_lens.py`](recipes/function_calls/function_call_rag_movie_lens.py) – _Streams assistant replies from MovieLens-powered RAG tool calling._
 
 </details>
+
+
+<details>
+<summary><strong>📁Files</strong></summary>
+- [`basic_file_crud.py`](recipes/files/basic_file_crud.py) – _Basic file storage CRUD and conversion examples._
+</details>
