@@ -7,15 +7,17 @@ Demonstrates:
 3. Initiating a run
 4. Streaming the assistant response via Hyperbolic provider
 """
-
 import os
+import time
+
 from dotenv import load_dotenv
 from projectdavid import Entity
 
-from recipes.function_calls.basic_function_call_handling import PROVIDER_KW
-
 # Load environment variables from .env
 load_dotenv()
+
+print(os.getenv("ENTITIES_API_KEY"))
+
 
 
 # ── Initialize the SDK client ────────────────────────────────────────────
@@ -32,7 +34,6 @@ PROVIDER = "Hyperbolic"
 
 def main():
     user_id = os.getenv("ENTITIES_USER_ID")
-
 
     # ── Assistant Creation  ──────────────────────
     # Assistants can be reused.

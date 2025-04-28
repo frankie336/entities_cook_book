@@ -13,7 +13,6 @@ ASSUMPTIONS
 
 Replace the constants (ASSISTANT_ID, MOVIE_STORE_ID, MODEL_ID) if needed.
 """
-
 import json
 import os
 from dotenv import load_dotenv

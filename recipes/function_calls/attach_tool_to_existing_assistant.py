@@ -38,6 +38,7 @@ tool = client.tools.create_tool(
 )
 print(f"[✓] Tool created → {tool.id}")
 
+
 # --- Attach to existing assistant (ID = 'default') ---------------
 client.tools.associate_tool_with_assistant(
     tool_id=tool.id,
