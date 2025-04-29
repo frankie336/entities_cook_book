@@ -1,0 +1,31 @@
+============================================================
+  IMPORTANT: Admin API Key Generated!
+  User Email: admin@example.com
+  User ID:    user_cM45RrK3zdf8L6x2Dc5Gpa
+  Key Prefix: ad_KihB0
+------------------------------------------------------------
+  PLAIN TEXT API KEY: ad_KihB0HkU-h8MSq523MaKvso-LWIQxzz6fLEkh7B8iSY
+------------------------------------------------------------
+  Store this key securely. Details also saved/updated in:
+    1. Credentials File: C:\Users\franc\PycharmProjects\entities_api\admin_credentials.txt
+    2. DotEnv File:      C:\Users\franc\PycharmProjects\entities_api\.env
+       (Key saved as both ADMIN_API_KEY and ADMIN_API_KEY)
+============================================================
+
+
+==================================================
+  Initial API Key Generated for Regular User (by Admin)!
+  User ID:    user_wzrx6tE0z04kj5OZ0Ea3dm
+  User Email: test_regular_user_1744847090@example.com
+  Key Prefix: ea_oi2XH
+  Key Name:   N/A
+--------------------------------------------------
+  PLAIN TEXT API KEY: ea_oi2XHRB_tFOPLkJLtrm43x1SaxJxCJYKNWmqp8OGjVU
+--------------------------------------------------
+  Provide this key to the regular user for API access.
+==================================================
+
+
+Script finished.
+
+Process finished with exit code 0

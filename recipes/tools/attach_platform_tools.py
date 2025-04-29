@@ -17,6 +17,3 @@ assistant = client.assistants.create_assistant(
 
 print(assistant)
 
-tool = client.tools.create_tool(
-
-)
