@@ -7,13 +7,14 @@ and attach it to an **existing** assistant with ID "default".
 import os
 from dotenv import load_dotenv
 from projectdavid import Entity
-from projectdavid_common.schemas.tools import ToolFunction
+
+from projectdavid_common.validation import ToolFunction
 
 # --- SDK init ----------------------------------------------------
 load_dotenv()
 client = Entity(
     base_url=os.getenv("BASE_URL", "http://localhost:9000"),
-    api_key=os.getenv("ENTITIES_API_KEY")
+    api_key=os.getenv("ADMIN_API_KEY")
 )
 
 # --- Define function schema --------------------------------------
@@ -42,6 +43,6 @@ print(f"[✓] Tool created → {tool.id}")
 # --- Attach to existing assistant (ID = 'default') ---------------
 client.tools.associate_tool_with_assistant(
     tool_id=tool.id,
-    assistant_id="default"
+    assistant_id="plt_ast_9fnJT01VGrK4a9fcNr8z2O"
 )
 print(f"[✓] Attached tool {tool.id} to assistant 'default'")

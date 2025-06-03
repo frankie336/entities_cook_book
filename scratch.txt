@@ -1,0 +1,146 @@
+C:\Users\franc\anaconda3\envs\entities_cook_book11\python.exe C:\Users\franc\PycharmProjects\entities_cook_book\recipes\vector_store\oa_basic_vector_embeddings_search.py
+2025-05-04 15:07:10,195 - INFO - C:\Users\franc\PycharmProjects\entities_cook_book\recipes\vector_store\oa_basic_vector_embeddings_search.py:21 - Entity initialized with base_url: http://localhost:9000
+2025-05-04 15:07:10,760 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\vectors.py:88 - Initialized HTTP‑based VectorStoreManager (host=localhost)
+2025-05-04 15:07:12,708 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\vectors.py:90 - Initialized optimized FileProcessor
+2025-05-04 15:07:12,708 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\entity.py:147 - VectorStoreClient → http://localhost:9000
+2025-05-04 15:07:13,344 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\vectors.py:185 - Created Qdrant collection vect_n0Y8Rp21FGziPNNXdDRnFo
+2025-05-04 15:07:13,713 - INFO - C:\Users\franc\PycharmProjects\entities_cook_book\recipes\vector_store\oa_basic_vector_embeddings_search.py:35 - Created store vect_n0Y8Rp21FGziPNNXdDRnFo (collection vect_n0Y8Rp21FGziPNNXdDRnFo)
+2025-05-04 15:07:21,244 - INFO - C:\Users\franc\PycharmProjects\entities_cook_book\recipes\vector_store\oa_basic_vector_embeddings_search.py:52 - Ingested Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf (status=StatusEnum.completed)
+('{\n'
+ '  "output": [\n'
+ '    {\n'
+ '      "type": "file_search_call",\n'
+ '      "id": "fs_mS0qtCGQLpYnBjlPQj7lJp",\n'
+ '      "status": "completed",\n'
+ '      "queries": [\n'
+ '        "proof, and in my opinion she is entitled to have an opportunity"\n'
+ '      ],\n'
+ '      "search_results": null\n'
+ '    },\n'
+ '    {\n'
+ '      "id": "msg_wuvi3LxGXPuqKCqxAMsmxr",\n'
+ '      "type": "message",\n'
+ '      "role": "assistant",\n'
+ '      "content": [\n'
+ '        {\n'
+ '          "type": "output_text",\n'
+ '          "text": "Top files for **proof, and in my opinion she is entitled '
+ 'to have an opportunity**:\\n\\u2022 '
+ 'Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf (score '
+ '0.48)\\n\\u2022 Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf '
+ '(score 0.46)\\n\\u2022 '
+ 'Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf (score 0.46)",\n'
+ '          "annotations": [\n'
+ '            {\n'
+ '              "type": "file_citation",\n'
+ '              "index": 85,\n'
+ '              "file_id": "vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f",\n'
+ '              "filename": '
+ '"Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf",\n'
+ '              "page": 16,\n'
+ '              "lines": [\n'
+ '                35,\n'
+ '                36,\n'
+ '                37,\n'
+ '                38,\n'
+ '                39\n'
+ '              ]\n'
+ '            }\n'
+ '          ]\n'
+ '        }\n'
+ '      ]\n'
+ '    }\n'
+ '  ]\n'
+ '}')
+2025-05-04 15:07:21,970 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:63 - Entity initialized with base_url: http://localhost:9000
+2025-05-04 15:07:21,971 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\threads_client.py:18 - API Key provided and added to headers.
+2025-05-04 15:07:22,135 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\threads_client.py:18 - [BaseAPIClient] Initialized with base_url: http://localhost:9000 and timeout config: Timeout(connect=10.0, read=30.0, write=30.0, pool=60.0)
+2025-05-04 15:07:22,135 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\entity.py:91 - ThreadsClient initialized with base_url: http://localhost:9000
+2025-05-04 15:07:22,135 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:69 - Creating thread with 1 participants
+2025-05-04 15:07:22,328 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\assistants_client.py:39 - API Key provided and added to headers.
+2025-05-04 15:07:22,492 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\assistants_client.py:39 - [BaseAPIClient] Initialized with base_url: http://localhost:9000 and timeout config: Timeout(connect=10.0, read=30.0, write=30.0, pool=60.0)
+2025-05-04 15:07:22,492 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\entity.py:75 - AssistantsClient ready at: http://localhost:9000
+2025-05-04 15:07:22,492 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:70 - Creating assistant name=synth‑ephemeral model=
+2025-05-04 15:07:22,682 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:70 - Assistant created with id=asst_jib8iebcTfYzSg0yYcRzo8
+2025-05-04 15:07:22,682 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\messages_client.py:25 - API Key provided and added to headers.
+2025-05-04 15:07:22,846 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\messages_client.py:25 - [BaseAPIClient] Initialized with base_url: http://localhost:9000 and timeout config: Timeout(connect=10.0, read=30.0, write=30.0, pool=60.0)
+2025-05-04 15:07:22,846 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\entity.py:99 - MessagesClient initialized using BaseAPIClient.
+2025-05-04 15:07:22,846 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:74 - Creating message for thread_id: thread_nCW8jEdQOeR9MyYoBHWUOX, role: user
+2025-05-04 15:07:23,045 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:74 - Message created successfully with id: message_DQdenSZdpNfWF9zP90suYo
+2025-05-04 15:07:23,045 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\runs.py:30 - API Key provided and added to headers.
+2025-05-04 15:07:23,215 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\runs.py:30 - [BaseAPIClient] Initialized with base_url: http://localhost:9000 and timeout config: Timeout(connect=10.0, read=30.0, write=30.0, pool=60.0)
+2025-05-04 15:07:23,215 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\entity.py:111 - RunsClient ready at: http://localhost:9000
+2025-05-04 15:07:23,215 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:80 - Creating run for assistant_id: asst_jib8iebcTfYzSg0yYcRzo8, thread_id: thread_nCW8jEdQOeR9MyYoBHWUOX
+2025-05-04 15:07:23,216 - DEBUG - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:80 - Run data: {'id': 'run_T57ah7MLvjWWWogOHoOxhj', 'assistant_id': 'asst_jib8iebcTfYzSg0yYcRzo8', 'cancelled_at': None, 'completed_at': None, 'created_at': 1746382043, 'expires_at': 1746385643, 'failed_at': None, 'incomplete_details': None, 'instructions': '', 'last_error': None, 'max_completion_tokens': 1000, 'max_prompt_tokens': 500, 'meta_data': {}, 'model': 'llama3.1', 'object': 'run', 'parallel_tool_calls': False, 'required_action': None, 'response_format': 'text', 'started_at': None, 'status': 'pending', 'thread_id': 'thread_nCW8jEdQOeR9MyYoBHWUOX', 'tool_choice': 'none', 'tools': [], 'truncation_strategy': {}, 'usage': None, 'temperature': 0.7, 'top_p': 0.9, 'tool_resources': {}}
+2025-05-04 15:07:23,412 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:80 - Run created successfully with id: run_mnMM177aRbJ49RBz0EzDvl
+2025-05-04 15:07:23,412 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\inference_client.py:25 - API Key provided and added to headers.
+2025-05-04 15:07:23,594 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\inference_client.py:25 - [BaseAPIClient] Initialized with base_url: http://localhost:9000 and timeout config: Timeout(connect=10.0, read=30.0, write=30.0, pool=60.0)
+2025-05-04 15:07:23,594 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\entity.py:125 - InferenceClient initialized using BaseAPIClient.
+2025-05-04 15:07:23,594 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\clients\synchronous_inference_wrapper.py:63 - Sending streaming inference request: {'provider': 'Hyperbolic', 'model': 'hyperbolic/deepseek-ai/DeepSeek-V3-0324', 'api_key': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcmltZS50aGFub3MzMzZAZ21haWwuY29tIiwiaWF0IjoxNzM4NDc2MzgyfQ.4V27eTb-TRwPKcA5zit4pJckoEUEa7kxmHwFEn9kwTQ', 'thread_id': 'thread_nCW8jEdQOeR9MyYoBHWUOX', 'message_id': 'message_DQdenSZdpNfWF9zP90suYo', 'run_id': 'run_mnMM177aRbJ49RBz0EzDvl', 'assistant_id': 'asst_jib8iebcTfYzSg0yYcRzo8', 'content': None}
+2025-05-04 15:07:43,669 - INFO - C:\Users\franc\anaconda3\envs\entities_cook_book11\Lib\site-packages\projectdavid\synthesis\llm_synthesizer.py:97 - Stream completed normally.
+('{\n'
+ '  "output": [\n'
+ '    {\n'
+ '      "type": "file_search_call",\n'
+ '      "id": "fs_tGPmqQWaTMasql9vxIND3R",\n'
+ '      "status": "completed",\n'
+ '      "queries": [\n'
+ '        "Explain the neighbour principle in Donoghue v\\u202fStevenson."\n'
+ '      ],\n'
+ '      "search_results": null\n'
+ '    },\n'
+ '    {\n'
+ '      "id": "msg_hmMy7B8t3ewAiy28poaITh",\n'
+ '      "type": "message",\n'
+ '      "role": "assistant",\n'
+ '      "content": [\n'
+ '        {\n'
+ '          "type": "output_text",\n'
+ '          "text": "The neighbour principle established in *Donoghue v '
+ 'Stevenson* (1932) holds that a person owes a duty of care to those who are '
+ 'closely and directly affected by their actions, such that they ought '
+ 'reasonably to foresee being harmed by negligence. This principle was '
+ 'articulated to address situations where no contractual relationship exists '
+ 'but where negligence could cause foreseeable harm to another party '
+ '(citation: vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f page 6). \\n\\nThe case '
+ 'rejected the narrow view that liability in tort required a contractual '
+ 'relationship or direct interaction, instead emphasizing that duty arises '
+ 'when one\'s actions could foreseeably injure a \\"neighbour\\" (citation: '
+ "vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f page 7). Lord Atkin's reasoning "
+ 'drew from *Heaven v Pender*, which suggested liability for supplying '
+ 'dangerous items without warning (citation: '
+ 'vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f page 13). The principle thus '
+ "expanded tort law to include manufacturers' liability to end consumers, even "
+ 'without privity of contract (citation: '
+ 'vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f page 21). \\n\\nThe decision also '
+ 'clarified that inspection difficulties or the nature of goods (e.g., '
+ 'inherently dangerous items) do not negate this duty (citation: '
+ 'vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f page 6, 9). The principle remains '
+ 'foundational in negligence law, ensuring accountability for foreseeable '
+ 'harm.",\n'
+ '          "annotations": [\n'
+ '            {\n'
+ '              "type": "file_citation",\n'
+ '              "index": -1,\n'
+ '              "file_id": "vsf_e01e5a5a-5c9e-4627-889a-a724fbba414f",\n'
+ '              "filename": '
+ '"Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf",\n'
+ '              "page": 20,\n'
+ '              "lines": [\n'
+ '                1,\n'
+ '                2,\n'
+ '                3,\n'
+ '                4,\n'
+ '                5\n'
+ '              ]\n'
+ '            }\n'
+ '          ]\n'
+ '        }\n'
+ '      ]\n'
+ '    }\n'
+ '  ]\n'
+ '}')
+Task was destroyed but it is pending!
+task: <Task pending name='Task-1198' coro=<<async_generator_athrow without __name__>()>>
+
+Process finished with exit code 0

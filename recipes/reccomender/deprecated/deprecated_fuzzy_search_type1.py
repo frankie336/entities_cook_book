@@ -26,7 +26,7 @@ queries = [
 # ─── Execute searches ─────────────────────────────────────────────────────────
 for query in queries:
     log.info(f"🔍 Query: {query}")
-    results = client.vectors.search_vector_store(
+    results = client.vectors.vector_file_search_raw(
         vector_store_id=VECTOR_STORE_ID,
         query_text=query,
         top_k=5,  # return top 5 matches

@@ -36,15 +36,15 @@ log = UtilsInterface.LoggingUtility()
 # --------------------------------------------------------------------- #
 store = client.vectors.create_vector_store(
     name="cook‑book‑demo",
-    user_id=os.getenv("ENTITIES_USER_ID"),
+
 )
 log.info("Created store %s (collection %s)", store.id, store.collection_name)
 
 # --------------------------------------------------------------------- #
 # 2. Confirm creation (sanity check)
 # --------------------------------------------------------------------- #
-diagnostic = client.vectors.retrieve_vector_store(store.id)
-log.info("Files so far: %d", diagnostic.file_count)   # Expect 0 on first run
+# diagnostic = client.vectors.retrieve_vector_store(store.id)
+# log.info("Files so far: %d", diagnostic.file_count)   # Expect 0 on first run
 
 # --------------------------------------------------------------------- #
 # 3. Add a file (embed → upsert → register)

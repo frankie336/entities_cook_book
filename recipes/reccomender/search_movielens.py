@@ -22,11 +22,17 @@ def lookup(store_id: str, q: str, top_k: int = 5):
         base_url=os.getenv("BASE_URL", "http://localhost:9000"),
         api_key=os.getenv("ENTITIES_API_KEY"),
     )
+
+
     embedder = client.vectors.file_processor.embedding_model
+
+
     qvec = embedder.encode(
         [q], convert_to_numpy=True, normalize_embeddings=True,
         truncate="model_max_length"
     )[0].tolist()
+
+
     hits = client.vectors.vector_manager.query_store(
         store_name=store_id, query_vector=qvec, top_k=top_k
     )
@@ -37,6 +43,7 @@ def lookup(store_id: str, q: str, top_k: int = 5):
         print(f"{i}. 🎬 {m['title']} — [{genres}] ({year}) score={h['score']:.3f}")
 
 def main(store: str, query: str | None, top_k: int):
+
     if query:
         lookup(store, query, top_k)
     else:

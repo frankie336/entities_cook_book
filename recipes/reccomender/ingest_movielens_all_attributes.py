@@ -74,8 +74,9 @@ def build_embedding_text(mv: pd.Series) -> str:
 # ─── Create vector store ──────────────────────────────────────────────────────
 vs = client.vectors.create_vector_store(
     name="movielens-complete-demo",
-    user_id=USER_ID,
+
 )
+
 collection = vs.collection_name
 print(f"🆕 Created vector store {vs.id} → collection '{collection}'")
 

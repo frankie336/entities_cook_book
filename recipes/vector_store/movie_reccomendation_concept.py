@@ -37,7 +37,6 @@ processor = FileProcessor()
 # --------------------------------------------------------------------- #
 store = client.vectors.create_vector_store(
     name="movie-recs-demo",
-    user_id=os.getenv("ENTITIES_USER_ID"),
 )
 log.info("Store %s ready (collection %s)", store.id, store.collection_name)
 
@@ -119,3 +118,5 @@ for i, hit in enumerate(hits, 1):
         f"⭐ {rating:.1f}  score={hit['score']:.3f}\n"
         f"     → {snippet!r}\n"
     )
+
+

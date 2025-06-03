@@ -8,6 +8,7 @@ Vector‑store quick‑start
 4.  Ask a natural‑language query and print the top‑k matches
 """
 import os
+import time
 from pathlib import Path
 from dotenv import load_dotenv
 from projectdavid import Entity
@@ -20,8 +21,9 @@ load_dotenv()                                        # reads .env in cwd
 
 client = Entity(
     base_url=os.getenv("BASE_URL", "http://localhost:9000"),
-    api_key=os.getenv("ENTITIES_API_KEY"),
+    api_key=os.getenv("ADMIN_API_KEY"),
 )
+
 
 log = UtilsInterface.LoggingUtility()               # optional
 
@@ -43,25 +45,12 @@ log.info("Created store %s (collection %s)", store.id, store.collection_name)
 # --------------------------------------------------------------------- #
 # 3.  Add a file (chunk → embed → upsert → register)
 # --------------------------------------------------------------------- #
-FILE_PATH = Path("Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf")   # any local text file
+FILE_PATH = Path("gym_people_watching.pdf")   # any local text file
 
 file_rec = client.vectors.add_file_to_vector_store(
     vector_store_id=store.id,
     file_path=FILE_PATH,
 )
+
 log.info("Ingested %s (status=%s)", FILE_PATH.name, file_rec.status)
-
-# --------------------------------------------------------------------- #
-# 4.  Run a similarity search
-# --------------------------------------------------------------------- #
-query = "proof, and in my opinion she is entitled to have an opportunity"
-hits = client.vectors.search_vector_store(
-    vector_store_id=store.id,
-    query_text=query,
-    top_k=5,
-)
-
-print("\nTop‑k results for query:\n", query)
-for i, h in enumerate(hits, 1):
-    print(f"{i:>2}. score={h['score']:.3f}  text={h['text'][:120]!r}")
 

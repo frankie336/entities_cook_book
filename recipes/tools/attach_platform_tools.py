@@ -8,12 +8,27 @@ client = Entity(
     api_key=os.getenv("ENTITIES_API_KEY")
 )
 
-
-assistant = client.assistants.create_assistant(
-    name="some_test_assistant",
-    tools=[{"type": "code_interpreter"}]
+# -----------------------------------------
+# Create vector store
+#------------------------------------------
+store = client.vectors.create_vector_store(
+    name="test_vectors",
 
 )
+print(store)
+# -----------------------------------------------
+# create an assistant with file search turned on
+#------------------------------------------------
+assistant = client.assistants.create_assistant(
+    name="some_test_assistant",
 
+    tools=[{
+        "type": "file_search",
+        "vector_store_ids": [store.id]
+    }]
+
+)
 print(assistant)
 
+vectors  = client.vectors.get_vector_stores_for_assistant(assistant_id=assistant.id)
+print(vectors)

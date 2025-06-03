@@ -21,7 +21,7 @@ client = Entity(
 )
 
 USER_ID            = os.getenv("ENTITIES_USER_ID")      # e.g. user_xxx…
-ASSISTANT_ID       = "default"                          # existing assistant
+ASSISTANT_ID       = "plt_ast_9fnJT01VGrK4a9fcNr8z2O"                          # existing assistant
 MODEL_ID           = "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct"
 PROVIDER_KW        = "Hyperbolic"                       # router reads model path anyway
 HYPERBOLIC_API_KEY = os.getenv("HYPERBOLIC_API_KEY")    # provider key
@@ -45,7 +45,8 @@ def get_flight_times(tool_name: str, arguments: dict) -> str:
 # ------------------------------------------------------------------
 # 2.  Thread + message + run
 # ------------------------------------------------------------------
-thread  = client.threads.create_thread(participant_ids=[USER_ID])
+thread  = client.threads.create_thread()
+
 message = client.messages.create_message(
     thread_id=thread.id,
     role="user",
@@ -71,7 +72,7 @@ print("\n[▶] Initial stream …\n")
 for chunk in stream.stream_chunks(
         provider=PROVIDER_KW,
         model=MODEL_ID,
-        timeout_per_chunk=60.0):
+        timeout_per_chunk=6.0):
     if chunk.get("type") == "function_call":
         print(f"\n[function_call] → {chunk['name']}({chunk['arguments']})\n")
     else:
@@ -88,7 +89,7 @@ handled = client.runs.poll_and_execute_action(
     actions_client=client.actions,
     messages_client=client.messages,
     timeout=60.0,
-    interval=0.1
+    interval=0.3
 )
 
 # ------------------------------------------------------------------

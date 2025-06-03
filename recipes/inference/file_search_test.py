@@ -8,13 +8,19 @@ Demonstrates:
 4. Streaming the assistant response via Hyperbolic provider
 """
 import os
+import time
 
 from dotenv import load_dotenv
 from projectdavid import Entity
 
+from recipes.function_calls.basic_function_call_handling import ASSISTANT_ID
+
 # Load environment variables from .env
 load_dotenv()
+
 print(os.getenv("ENTITIES_API_KEY"))
+
+
 
 # ── Initialize the SDK client ────────────────────────────────────────────
 client = Entity(
@@ -31,27 +37,7 @@ PROVIDER = "Hyperbolic"
 def main():
     user_id = os.getenv("ENTITIES_USER_ID")
 
-    # ── Assistant Creation  ──────────────────────
-    # Assistants can be reused.
-    # ─────────────────────────────────────────────
-    print("[+] Creating assistant...")
-    assistant = client.assistants.create_assistant(
-        name="test_assistant",
-        instructions="You are a helpful AI assistant",
-
-        tools=[{"type": "code_interpreter"},
-               {"type": "web_search"},
-               {"type": "vector_store_search"},
-               {"type": "computer"},
-               {"type": "file_search"},
-
-               ],
-
-    )
-    print(f"[✓] Assistant created: {assistant.id}")
-    print(f"Assistant:\n {assistant}")
-    print(f"Assistant tools:\n {assistant.tools}")
-
+    ASSISTANT_ID = "plt_ast_9fnJT01VGrK4a9fcNr8z2O"
 
     # ── Thread Creation ──────────────────────────
     # Threads can be reused.
@@ -67,8 +53,12 @@ def main():
     message = client.messages.create_message(
         thread_id=actual_thread_id,
         role="user",
-        content="Explain a black hole to me in pure mathematical terms",
-        assistant_id=assistant.id,
+
+        # content="Explain a black hole to me in pure mathematical terms",
+
+        content="Use file search to response to the following: Who is the most insidious  type of gym person, and why?",
+
+        assistant_id=ASSISTANT_ID,
     )
     print(f"[✓] Message created: {message.id}")
 
@@ -77,11 +67,10 @@ def main():
 
     print("[+] Creating run...")
     run = client.runs.create_run(
-        assistant_id=assistant.id,
+        assistant_id=ASSISTANT_ID,
         thread_id=actual_thread_id
     )
     print(f"[✓] Run created: {run.id}")
-    print(f"[✓] Run created with user id: {run.user_id}")
 
     # --- Set Up Streaming ---
     print("[*] Setting up synchronous stream...")
@@ -89,7 +78,7 @@ def main():
     sync_stream.setup(
         user_id=user_id,
         thread_id=actual_thread_id,
-        assistant_id=assistant.id,
+        assistant_id=ASSISTANT_ID,
         message_id=message.id,
         run_id=run.id,
         api_key=API_KEY,
