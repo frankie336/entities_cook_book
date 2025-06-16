@@ -98,12 +98,15 @@ filters = {
 # --------------------------------------------------------------------- #
 # 4. Run the recommendation search
 # --------------------------------------------------------------------- #
-hits = client.vectors.search_vector_store(
+hits = client.vectors.vector_file_search_raw(
     vector_store_id=store.id,
     query_text=user_pref,
     top_k=10,
     filters=filters,
 )
+
+
+
 
 print(f"\nTop movie recommendations for: {user_pref!r}\n")
 for i, hit in enumerate(hits, 1):
