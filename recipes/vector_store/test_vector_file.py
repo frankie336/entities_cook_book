@@ -45,7 +45,7 @@ log.info("Created store %s (collection %s)", store.id, store.collection_name)
 # --------------------------------------------------------------------- #
 # 3.  Add a file (chunk → embed → upsert → register)
 # --------------------------------------------------------------------- #
-FILE_PATH = Path("gym_people_watching.pdf")   # any local text file
+FILE_PATH = Path("docs/gym_people_watching.pdf")   # any local text file
 
 file_rec = client.vectors.add_file_to_vector_store(
     vector_store_id=store.id,

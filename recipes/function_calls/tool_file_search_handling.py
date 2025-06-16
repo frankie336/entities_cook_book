@@ -50,10 +50,9 @@ thread  = client.threads.create_thread()
 message = client.messages.create_message(
     thread_id=thread.id,
     role="user",
-    content="Please fetch me the flight times between LAX and JFK. ",
+    content="Please fetch me a list of files we have available for search",
     assistant_id=ASSISTANT_ID
 )
-
 run = client.runs.create_run(assistant_id=ASSISTANT_ID, thread_id=thread.id)
 
 # ------------------------------------------------------------------
@@ -73,7 +72,6 @@ print("\n[▶] Initial stream …\n")
 for chunk in stream.stream_chunks(
         provider=PROVIDER_KW,
         model=MODEL_ID,
-        suppress_fc=False,
         timeout_per_chunk=6.0):
     if chunk.get("type") == "function_call":
         print(f"\n[function_call] → {chunk['name']}({chunk['arguments']})\n")
@@ -91,7 +89,7 @@ handled = client.runs.poll_and_execute_action(
     actions_client=client.actions,
     messages_client=client.messages,
     timeout=60.0,
-    interval=0.3
+    interval=0.1
 )
 
 # ------------------------------------------------------------------

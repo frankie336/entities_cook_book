@@ -44,7 +44,7 @@ log.info("Store %s ready (collection %s)", store.id, store.collection_name)
 # 2. Ingest movies.csv
 #    Expected columns: title, description, genres (comma‑sep), year, rating
 # --------------------------------------------------------------------- #
-CSV_PATH = Path("movies.csv")
+CSV_PATH = Path("docs/movies.csv")
 movies = []
 with CSV_PATH.open(newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)

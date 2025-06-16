@@ -49,7 +49,7 @@ log.info("Created store %s (collection %s)", store.id, store.collection_name)
 # --------------------------------------------------------------------- #
 # 3. Add a file (embed → upsert → register)
 # --------------------------------------------------------------------- #
-FILE_PATH = Path("201101_donoghue_v-_stevenson.txt")
+FILE_PATH = Path("docs/201101_donoghue_v-_stevenson.txt")
 file_entry = client.vectors.add_file_to_vector_store(
     vector_store_id=store.id,
     file_path=FILE_PATH,
