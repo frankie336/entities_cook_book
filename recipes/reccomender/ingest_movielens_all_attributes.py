@@ -80,8 +80,11 @@ vs = client.vectors.create_vector_store(
 collection = vs.collection_name
 print(f"🆕 Created vector store {vs.id} → collection '{collection}'")
 
+
 # ─── Embed & ingest ──────────────────────────────────────────────────────────
 embedder = client.vectors.file_processor.embedding_model
+
+
 
 for _, mv in movies.iterrows():
     text = build_embedding_text(mv)
@@ -111,3 +114,4 @@ for _, mv in movies.iterrows():
     )
 
 print(f"✅ Ingested {len(movies)} fully enriched movies.")
+# Created vector store vect_mqfWyNlZbacer73PQu4Upy → collection 'vect_mqfWyNlZbacer73PQu4Upy'

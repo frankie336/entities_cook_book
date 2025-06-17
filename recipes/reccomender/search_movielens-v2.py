@@ -18,7 +18,7 @@ load_dotenv()
 # ────────────────────────────────────────────────────────────────
 BASE_URL = os.getenv("BASE_URL", "http://localhost:9000")
 API_KEY = os.getenv("ENTITIES_API_KEY")
-STORE_ID = "vect_GsSezuKiXy11rFssDcRFAg"
+STORE_ID = "vect_mqfWyNlZbacer73PQu4Upy"
 TOP_K = int(os.getenv("TOP_K", "5"))
 
 if not STORE_ID:

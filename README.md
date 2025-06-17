@@ -45,7 +45,7 @@ This cookbook is optimized for:
 <summary><strong>🎬 RAG / MovieLens</strong></summary>
 
 - [`ingest_movielens_all_attributes.py`](recipes/reccomender/ingest_movielens_all_attributes.py) – _Ingests and embeds all descriptive MovieLens metadata into a vector store._
-- [`search_movielens.py`](recipes/reccomender/search_movielens.py) – _Command-line fuzzy vector search over MovieLens using semantic embeddings._
+- [`search_movielens.py`](recipes/reccomender/deprecated/search_movielens.py) – _Command-line fuzzy vector search over MovieLens using semantic embeddings._
 - [`batch_search_movielens.py`](recipes/reccomender/batch_search_movielens.py) – _Runs multiple stylistically rich semantic queries against a MovieLens vector store._
 - [`register_search_movies_tool.py`](recipes/function_calls/register_search_movies_tool.py) – _Registers and attaches the `search_movies` tool for semantic MovieLens queries._
 - [`function_call_rag_movie_lens.py`](recipes/function_calls/function_call_rag_movie_lens.py) – _Streams assistant replies from MovieLens-powered RAG tool calling._

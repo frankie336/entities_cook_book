@@ -1,42 +1,52 @@
-#!recipes/reccomender/batch_search_movielens.py
-# Run multiple nuanced semantic queries against your existing vector store
+#!/usr/bin/env python3
+"""
+Run a set of nuanced semantic queries against an existing MovieLens
+vector-store, using the **public VectorStoreClient API** instead of the
+low-level VectorStoreManager.
+
+• Relies on `vector_file_search_raw()`, which internally handles
+  text-embedding, auto-detects the correct vector field, and applies any
+  patched logic you’ve added to VectorStoreClient.
+• `STORE_ID` must be the *backend store id* (not the collection name).
+"""
+
+from __future__ import annotations
 
 import os
 from dotenv import load_dotenv
 from projectdavid import Entity
 
-# ─── Configuration ───────────────────────────────────────────────────────────
+# ─── configuration ──────────────────────────────────────────────────────────
 load_dotenv()
-client = Entity(
-    base_url=os.getenv("BASE_URL", "http://localhost:9000"),
-    api_key=os.getenv("ENTITIES_API_KEY"),
-)
-store_name = "vect_wHvnnr27MGNCVIhz9yqg07"
-embedder = client.vectors.file_processor.embedding_model
+BASE_URL = os.getenv("BASE_URL", "http://localhost:9000")
+API_KEY  = os.getenv("ENTITIES_API_KEY")
+STORE_ID = "vect_mqfWyNlZbacer73PQu4Upy"        # ← backend id, **not** collection
+TOP_K    = int(os.getenv("TOP_K", "5"))
 
+client = Entity(base_url=BASE_URL, api_key=API_KEY)
 
-def search(q: str, top_k: int = 5):
-    print(f"\n🔍 Query: {q}")
-    qvec = embedder.encode(
-        [q], convert_to_numpy=True, normalize_embeddings=True,
-        truncate="model_max_length"
-    )[0].tolist()
-    hits = client.vectors.vector_manager.query_store(
-        store_name=store_name,
-        query_vector=qvec,
-        top_k=top_k
+# ─── helper: single search call (uses VectorStoreClient) ────────────────────
+def search(query: str, top_k: int = TOP_K) -> None:
+    print(f"\n🔍  {query}")
+    hits = client.vectors.vector_file_search_raw(
+        vector_store_id = STORE_ID,
+        query_text      = query,
+        top_k           = top_k,
     )
-    for i, h in enumerate(hits, 1):
-        m = h["metadata"]
-        title = m["title"]
-        genres = ", ".join(m["genres"]) if m["genres"] else "—"
-        year = m["release_year"] or "—"
-        print(f"{i}. 🎬 {title} — [{genres}] ({year}) score={h['score']:.3f}")
 
+    if not hits:
+        print("🙈  No results")
+        return
 
-# ─── Nuanced queries ─────────────────────────────────────────────────────────
+    for idx, h in enumerate(hits, 1):
+        md      = h.get("meta_data") or h.get("metadata") or {}
+        title   = md.get("title", "<untitled>")
+        genres  = ", ".join(md.get("genres", [])) or "—"
+        year    = md.get("release_year", "—")
+        print(f"{idx}. 🎬 {title} — [{genres}] ({year})  score={h['score']:.3f}")
 
-queries = [
+# ─── queries to run ─────────────────────────────────────────────────────────
+QUERIES = [
     # 🎭 Stylistic & tonal
     "A film with a whimsical tone but dark undertones, likely animated and aimed at children but emotionally traumatic for adults.",
     "An ensemble comedy where at least one character wears a trench coat and the score uses saxophones.",
@@ -63,5 +73,6 @@ queries = [
     "Something that feels like a live-action adaptation of a dream about Looney Tunes crossed with an arthouse thriller.",
 ]
 
-for query in queries:
-    search(query)
+if __name__ == "__main__":
+    for q in QUERIES:
+        search(q)

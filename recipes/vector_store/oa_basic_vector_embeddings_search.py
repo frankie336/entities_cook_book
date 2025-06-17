@@ -8,11 +8,11 @@ Vector‑store quick‑start
 4.  Ask a natural‑language query and print the top‑k matches
 """
 import os
-import time
 from pathlib import Path
+
 from dotenv import load_dotenv
 from projectdavid import Entity
-from projectdavid_common import UtilsInterface   # only for pretty logging
+from projectdavid_common import UtilsInterface
 
 # --------------------------------------------------------------------- #
 # environment & client
@@ -44,7 +44,7 @@ log.info("Created store %s (collection %s)", store.id, store.collection_name)
 # --------------------------------------------------------------------- #
 # 3.  Add a file (chunk → embed → upsert → register)
 # --------------------------------------------------------------------- #
-FILE_PATH = Path("docs/gym_people_watching.pdf")   # any local text file
+FILE_PATH = Path("docs/Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf")   # any local text file
 
 file_rec = client.vectors.add_file_to_vector_store(
     vector_store_id=store.id,
@@ -59,7 +59,7 @@ log.info("Ingested %s (status=%s)", FILE_PATH.name, file_rec.status)
 
 env = client.vectors.unattended_file_search(
     vector_store_id=store.id,
-    query_text="Who is the most insideous type of gym person, and why?",
+    query_text="Explain the neighbour principle",
 )
 
 import json, pprint
