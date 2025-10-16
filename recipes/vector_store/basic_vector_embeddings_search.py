@@ -28,10 +28,12 @@ log = UtilsInterface.LoggingUtility()               # optional
 # --------------------------------------------------------------------- #
 # 1.  Create a vector store
 # --------------------------------------------------------------------- #
+
 store = client.vectors.create_vector_store(
     name="cook‑book‑demo",
 
 )
+
 log.info("Created store %s (collection %s)", store.id, store.collection_name)
 
 # --------------------------------------------------------------------- #
@@ -43,7 +45,7 @@ log.info("Created store %s (collection %s)", store.id, store.collection_name)
 # --------------------------------------------------------------------- #
 # 3.  Add a file (chunk → embed → upsert → register)
 # --------------------------------------------------------------------- #
-FILE_PATH = Path("docs/Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf")   # any local text file
+FILE_PATH = Path("docs/Donoghue_v_Stevenson__1932__UKHL_100__26_May_1932_.pdf")
 
 file_rec = client.vectors.add_file_to_vector_store(
     vector_store_id=store.id,
@@ -55,7 +57,7 @@ log.info("Ingested %s (status=%s)", FILE_PATH.name, file_rec.status)
 # 4.  Run a similarity search
 # --------------------------------------------------------------------- #
 query = "proof, and in my opinion she is entitled to have an opportunity"
-hits = client.vectors.search_vector_store(
+hits = client.vectors.vector_file_search_raw(
     vector_store_id=store.id,
     query_text=query,
     top_k=5,

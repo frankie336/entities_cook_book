@@ -8,6 +8,7 @@ Demonstrates:
 4. Streaming the assistant response via Hyperbolic provider
 """
 import os
+import time
 
 from dotenv import load_dotenv
 from projectdavid import Entity
@@ -17,6 +18,7 @@ load_dotenv()
 print(os.getenv("ENTITIES_API_KEY"))
 
 # ── Initialize the SDK client ────────────────────────────────────────────
+
 client = Entity(
     base_url=os.getenv("BASE_URL", "http://localhost:9000"),
     api_key=os.getenv("ENTITIES_API_KEY")
@@ -35,6 +37,7 @@ def main():
     # Assistants can be reused.
     # ─────────────────────────────────────────────
     print("[+] Creating assistant...")
+
     assistant = client.assistants.create_assistant(
         name="test_assistant",
         instructions="You are a helpful AI assistant",
@@ -47,7 +50,11 @@ def main():
 
                ],
 
+
+
     )
+
+
     print(f"[✓] Assistant created: {assistant.id}")
     print(f"Assistant:\n {assistant}")
     print(f"Assistant tools:\n {assistant.tools}")
@@ -58,34 +65,55 @@ def main():
     # ─────────────────────────────────────────────
 
     print("[+] Creating thread...")
+
     thread = client.threads.create_thread(participant_ids=[user_id])
+
     actual_thread_id = thread.id
     print(f"[✓] Thread created: {actual_thread_id}")
 
     # ── Message Creation ──────────────────────────
     print("[+] Creating user message...")
+
+
     message = client.messages.create_message(
         thread_id=actual_thread_id,
         role="user",
         content="Explain a black hole to me in pure mathematical terms",
         assistant_id=assistant.id,
     )
+
+
     print(f"[✓] Message created: {message.id}")
 
 
     # ── Run Creation ──────────────────────────
 
     print("[+] Creating run...")
+
     run = client.runs.create_run(
         assistant_id=assistant.id,
-        thread_id=actual_thread_id
+        thread_id=actual_thread_id,
+        truncation_strategy="auto"
     )
+
+    # cancel_run = client.runs.cancel_run(run_id=run.id)
+    # print(cancel_run)
+    # time.sleep(10000)
+
+    list_runs = client.runs.list_runs(
+        thread_id=actual_thread_id,
+     )
+    print(list_runs.model_dump_json())
+
+
     print(f"[✓] Run created: {run.id}")
     print(f"[✓] Run created with user id: {run.user_id}")
 
     # --- Set Up Streaming ---
     print("[*] Setting up synchronous stream...")
+
     sync_stream = client.synchronous_inference_stream
+
     sync_stream.setup(
         user_id=user_id,
         thread_id=actual_thread_id,
@@ -94,8 +122,6 @@ def main():
         run_id=run.id,
         api_key=API_KEY,
     )
-
-
     print("[✓] Stream setup complete.")
 
     # --- Start Streaming ---
@@ -114,6 +140,11 @@ def main():
         print(f"\n[!] Stream Error: {e}")
 
     print("[✓] Script finished.")
+
+    # retrieve_run = client.runs.retrieve_run(run_id=actual_thread_id)
+    # print(retrieve_run)
+    #  time.sleep(1000)
+
 
 if __name__ == "__main__":
     main()
